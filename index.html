@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sustainable Campus Vision | GTU Societal Internship (BE05000011)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--display:'Cormorant Garamond',serif;--sans:'Inter',sans-serif;--bg:#FDFBF7;--card:#FFF;--elevated:#F8F5EE;--text:#0F2A43;--muted:#4B6375;--gold:#B8924A;--gold-lt:#F4EAD4;--teal:#1F6F78;--border:rgba(15,42,67,.08);--shadow:0 8px 24px rgba(15,42,67,.06);--danger:#C0392B;--warning:#D35400;--success:#27AE60;}
+[data-theme="dark"]{--bg:#0A121C;--card:#121E2C;--elevated:#18283A;--text:#F0F4F8;--muted:#A1B4C4;--gold:#D4AF67;--gold-lt:rgba(212,175,103,.15);--teal:#3AA9B5;--border:rgba(255,255,255,.08);--shadow:0 8px 24px rgba(0,0,0,.4);}
+*{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;transition:.3s;overflow-x:hidden;}
+h1,h2,h3,h4{font-family:var(--display);color:var(--text);line-height:1.2;}
+h1{font-size:clamp(2.2rem,4.5vw,3.5rem);}h2{font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:.5rem;}h3{font-size:1.3rem;margin-bottom:.4rem;}
+p{margin-bottom:.8rem;color:var(--muted);font-size:.92rem;}
+a{color:var(--gold);text-decoration:none;}a:hover{text-decoration:underline;}
+.container{max-width:1180px;margin:0 auto;padding:0 1.2rem;width:100%;}
+.section{padding:4.5rem 0;}.header{text-align:center;max-width:760px;margin:0 auto 2.5rem;}
+.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;font-weight:700;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:2px;display:inline-block;margin-bottom:.5rem;}
+.gold-line{width:50px;height:2px;background:var(--gold);margin:.8rem auto;}
+.card{background:var(--card);border-radius:14px;border:1px solid var(--border);padding:1.6rem;box-shadow:var(--shadow);transition:.3s;}
+.card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.btn{display:inline-flex;align-items:center;padding:.6rem 1.3rem;font-size:.88rem;font-weight:600;border-radius:25px;cursor:pointer;border:1px solid transparent;transition:.25s;}
+.btn-gold{background:var(--gold);color:#FFF!important;}.btn-gold:hover{opacity:.9;}
+.btn-outline{background:transparent;border-color:var(--gold);color:var(--text);}.btn-outline:hover{background:var(--gold-lt);color:var(--gold);}
+.badge{display:inline-block;padding:.2rem .5rem;border-radius:4px;font-size:.7rem;font-weight:700;text-transform:uppercase;}
+.b-danger{background:rgba(192,57,43,.15);color:var(--danger);}.b-warning{background:rgba(211,84,0,.15);color:var(--warning);}.b-gold{background:var(--gold-lt);color:var(--gold);}.b-success{background:rgba(39,174,96,.15);color:var(--success);}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));z-index:1000;width:0%;}
+.nav{position:sticky;top:0;width:100%;z-index:999;background:var(--bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;height:65px;}
+.nav-links{display:flex;gap:1rem;list-style:none;}
+.nav-links a{font-size:.84rem;color:var(--muted);font-weight:500;}.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.table-wrap{width:100%;overflow-x:auto;margin:1.2rem 0;border-radius:10px;border:1px solid var(--border);background:var(--card);}
+table{width:100%;border-collapse:collapse;font-size:.85rem;text-align:left;}
+th{background:var(--elevated);color:var(--text);padding:.75rem .9rem;border-bottom:1px solid var(--border);white-space:nowrap;}
+td{padding:.7rem .9rem;border-bottom:1px solid var(--border);color:var(--muted);}
+tr:hover{background:var(--elevated);}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-top:2rem;}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;box-shadow:var(--shadow);border-top:3px solid var(--gold);}
+.kpi-v{font-family:var(--display);font-size:1.8rem;font-weight:700;color:var(--text);line-height:1.1;margin-bottom:.2rem;}
+.kpi-l{font-size:.7rem;text-transform:uppercase;color:var(--muted);font-weight:600;}
+.timeline{margin:1.8rem 0;padding-left:1.5rem;border-left:2px solid var(--gold);}
+.t-item{position:relative;margin-bottom:1.6rem;}
+.t-dot{position:absolute;left:-2.05rem;top:.25rem;width:12px;height:12px;border-radius:50%;background:var(--bg);border:3px solid var(--gold);}
+.tab-btn{padding:.6rem 1rem;font-size:.88rem;font-weight:600;background:transparent;border:none;border-bottom:2px solid transparent;color:var(--muted);cursor:pointer;}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+.tab-pane{display:none;}.tab-pane.active{display:block;}
+.acc{border:1px solid var(--border);border-radius:8px;margin-bottom:.6rem;background:var(--card);overflow:hidden;}
+.acc-h{width:100%;padding:.85rem 1rem;display:flex;justify-content:space-between;background:transparent;border:none;font-size:.92rem;font-weight:600;color:var(--text);cursor:pointer;}
+.acc-c{max-height:0;overflow:hidden;transition:.3s;background:var(--elevated);font-size:.85rem;color:var(--muted);padding:0 1rem;}
+.raci-table th,.raci-table td{text-align:center;}.raci-table th:first-child,.raci-table td:first-child{text-align:left;}
+.raci-table td.c-h,.raci-table th.c-h,.raci-table tr.r-h td{background:var(--gold-lt)!important;}
+.chip{display:inline-block;width:22px;height:22px;line-height:22px;border-radius:50%;font-weight:700;font-size:.7rem;}
+.chip-r{background:rgba(192,57,43,.15);color:var(--danger);}.chip-a{background:var(--gold-lt);color:var(--gold);}.chip-c{background:rgba(31,111,120,.2);color:var(--teal);}.chip-i{background:rgba(122,144,162,.2);color:#7A90A2;}
+.chart-box{position:relative;min-height:260px;max-height:320px;}
+.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);z-index:2000;display:none;align-items:center;justify-content:center;padding:1.5rem;}
+.lightbox.active{display:flex;}
+#back-to-top{position:fixed;bottom:1.5rem;right:1.5rem;width:38px;height:38px;border-radius:50%;background:var(--gold);color:#FFF;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;}
+@media(max-width:768px){.grid-2{grid-template-columns:1fr;}.nav-links{display:none;}.kpi-grid{grid-template-columns:1fr 1fr;}}
+@media print{.nav,#progress-bar,#back-to-top,.btn,.tab-btn{display:none!important;}.tab-pane,.acc-c{display:block!important;max-height:none!important;}}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<nav class="nav">
+  <div class="container nav-wrap">
+    <a href="#hero"><strong>Sustainable Campus Vision</strong> <small style="color:var(--gold);display:block;font-size:.68rem;">GTU BE05000011 • GEC Valsad</small></a>
+    <ul class="nav-links" id="nl">
+      <li><a href="#about">Campus</a></li><li><a href="#diagnostic">Diagnostic</a></li><li><a href="#problems">Problems</a></li>
+      <li><a href="#gallery">Gallery</a></li><li><a href="#sdg">SDGs</a></li><li><a href="#planning">Planning</a></li>
+      <li><a href="#energy">Energy</a></li><li><a href="#solutions">Solutions</a></li><li><a href="#calculator">Calculator</a></li>
+      <li><a href="#budget">Budget</a></li><li><a href="#risks">Risks</a></li><li><a href="#surveys">Surveys</a></li>
+    </ul>
+    <div style="display:flex;gap:.5rem;">
+      <button onclick="toggleTheme()" class="btn btn-outline" style="padding:.3rem .6rem;" title="Toggle Theme">🌓</button>
+      <button onclick="window.print()" class="btn btn-outline" style="padding:.3rem .6rem;">PDF</button>
+    </div>
+  </div>
+</nav>
+
+<!-- 1. HERO -->
+<header class="section" id="hero" style="background:radial-gradient(circle at 80% 20%,var(--gold-lt) 0%,transparent 60%);">
+  <div class="container">
+    <span class="badge b-gold">GTU BE05000011 Societal Internship</span>
+    <h1 style="margin:1rem 0;">Sustainable Campus Vision: <span style="color:var(--gold);font-style:italic;">Engineering Audit</span> &amp; Net-Zero Roadmap</h1>
+    <p>Comprehensive engineering diagnostic &amp; clean energy transition study for <strong>Government Engineering College, Valsad</strong> under <strong>Gujarat Technological University</strong>.<br>
+    Lead: <strong>Patel Harshilbhai Vinodbhai</strong> (240190119072), Mechanical 5th Sem | Guide: <strong>Prof. R.J. Varotariya</strong> | June 2026</p>
+    <div style="display:flex;gap:.8rem;margin:1.8rem 0 2.5rem;">
+      <a href="#problems" class="btn btn-gold">Explore Findings</a><a href="#solutions" class="btn btn-outline">View Solutions</a>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-v" id="kpi-val">54,376</div><div class="kpi-l">kWh/mo Baseline</div></div>
+      <div class="kpi"><div class="kpi-v">35-40%</div><div class="kpi-l">Avoidable Waste</div></div>
+      <div class="kpi"><div class="kpi-v">75 kWp</div><div class="kpi-l">Rooftop Solar PV</div></div>
+      <div class="kpi"><div class="kpi-v">₹54-68 L</div><div class="kpi-l">CAPEX Estimate</div></div>
+      <div class="kpi"><div class="kpi-v">2.5-3.5 yr</div><div class="kpi-l">Blended Payback</div></div>
+      <div class="kpi"><div class="kpi-v">~200 t</div><div class="kpi-l">CO₂/yr Avoided</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- 2. ABOUT FIELD AREA -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Institutional Baseline</span><h2>About the Field Area</h2><div class="gold-line"></div></div>
+    <div class="grid-2">
+      <div>
+        <p>GEC Valsad covers <strong>25 acres</strong> along Tithal Road, Valsad (PIN 396001), serving <strong>1,200+ students</strong> and <strong>120 staff</strong>. Abundant solar irradiance of <strong>5.2 to 5.6 kWh/m²/day</strong> offers premier rooftop solar viability over 300+ sunny days.</p>
+      </div>
+      <div class="card" style="border-left:4px solid var(--gold);">
+        <h4 style="margin-bottom:.5rem;">Baseline Conditions</h4>
+        <ul style="padding-left:1.2rem;font-size:.85rem;color:var(--muted);line-height:1.7;">
+          <li>Electrical infrastructure from the 1980s with aged distribution busbars.</li>
+          <li>Machinery 15-20 yrs old with degraded IE1 induction motors.</li>
+          <li>10,500 sq ft concrete rooftop completely unutilized with no solar.</li>
+          <li>34% campus street lights non-functional; balance use 250W HPSV lamps.</li>
+          <li>No PM register; 54,376 kWh/month consumption with 35-40% avoidable waste.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. COMMUNITY DIAGNOSTIC -->
+<section class="section" id="diagnostic" style="background:var(--elevated);">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Methodology</span><h2>Community Diagnostic Study</h2><div class="gold-line"></div></div>
+    <div class="grid-3">
+      <div class="card"><h4>50+ Staff Interviews</h4><p>1-on-1 interviews with faculty, workshop superintendents, and lab staff capturing machine faults.</p></div>
+      <div class="card"><h4>Student Questionnaires</h4><p>Multi-department student cohort surveys on workshop lighting satisfaction and electrical safety perception.</p></div>
+      <div class="card"><h4>Photometric Lux Audits</h4><p>Digital Lux meter recorded &lt;120 lux at 42 task benches vs IS 3646 mandate of 300–500 lux.</p></div>
+      <div class="card"><h4>Clamp-On Analysers</h4><p>Logged lagging power factor of 0.72 and severe motor idling running power dissipation.</p></div>
+      <div class="card"><h4>Megger Earth Tests</h4><p>Earth tester logged 4.2–8.1 Ω grounding resistance against IS 3043 (&lt;1.0 Ω limit).</p></div>
+      <div class="card"><h4>Observational Audits</h4><p>Day/night surveillance of uninsulated lines, streetlight cycles, and machine idling.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. PROBLEM STATEMENT -->
+<section class="section" id="problems">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Critical Deficits</span><h2>Problem Statement</h2><div class="gold-line"></div></div>
+    <div class="grid-3">
+      <div class="card" style="border-top:4px solid var(--danger);">
+        <span class="badge b-danger">Critical</span>
+        <h3 style="margin:.5rem 0;">P-01: Safety Non-Compliance</h3>
+        <p>Violates IS 11016:1984 machine guard rules; earthing 4.2-8.1 Ω vs &lt;1 Ω; zero ELCB/RCCB shock protection.</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--warning);">
+        <span class="badge b-warning">Loss</span>
+        <h3 style="margin:.5rem 0;">P-02: Energy Wastage</h3>
+        <p>19,000–21,000 kWh/mo wasted; aged IE1 motors; degraded power factor 0.72 incurring heavy DISCOM surcharges.</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--gold);">
+        <span class="badge b-gold">Untapped</span>
+        <h3 style="margin:.5rem 0;">P-03: Zero Renewables</h3>
+        <p>10,500 sq ft RCC roof completely vacant; ₹7–8.5 Lakhs/yr foregone; 100% grid dependence with ~530 t CO₂/yr.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. FIELD GALLERY -->
+<section class="section" id="gallery" style="background:var(--elevated);">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Visual Evidence</span><h2>Field Gallery (7 Audited Figures)</h2><div class="gold-line"></div></div>
+    <div class="grid-4" id="gallery-container"></div>
+  </div>
+</section>
+<div class="lightbox" id="lb" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="card" style="max-width:700px;width:100%;text-align:center;">
+    <div id="lb-view" style="height:280px;background:#0c1825;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;border-radius:8px;"></div>
+    <h3 id="lb-t"></h3><p id="lb-d" style="font-size:.85rem;"></p>
+    <button class="btn btn-outline" onclick="document.getElementById('lb').classList.remove('active')">Close</button>
+  </div>
+</div>
+
+<!-- 6. SDG ALIGNMENT -->
+<section class="section" id="sdg">
+  <div class="container">
+    <div class="header"><span class="eyebrow">UN 2030</span><h2>SDG Alignment</h2><div class="gold-line"></div></div>
+    <div class="grid-4">
+      <div class="card" style="border-top:4px solid #C5192D;"><h4 style="color:#C5192D;">SDG 04: Quality Education</h4><p>Protecting 1,200+ students from rotating machine entrapment and electric shock.</p></div>
+      <div class="card" style="border-top:4px solid #FCC30B;"><h4 style="color:#FCC30B;">SDG 07: Clean Energy</h4><p>75 kWp solar array generating 1,18,000+ kWh/yr clean electricity on campus.</p></div>
+      <div class="card" style="border-top:4px solid #FD9D24;"><h4 style="color:#FD9D24;">SDG 11: Sustainable Cities</h4><p>Modernized substation grounding and intelligent LED streetlighting in Valsad.</p></div>
+      <div class="card" style="border-top:4px solid #3F7E44;"><h4 style="color:#3F7E44;">SDG 13: Climate Action</h4><p>Institutional carbon reduction of ~200 metric tonnes of CO₂ equivalent per year.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. PROJECT PLANNING -->
+<section class="section" id="planning" style="background:var(--elevated);">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Project Management</span><h2>15-Day Planning, WBS &amp; RACI</h2><div class="gold-line"></div></div>
+    <div class="timeline">
+      <div class="t-item"><div class="t-dot"></div><strong>Day 1–3: Reconnaissance &amp; Sensor Calibration</strong><p>SLD reviews, instrument benchmarking (Lux, clamp, megger).</p></div>
+      <div class="t-item"><div class="t-dot"></div><strong>Day 4–9: Diagnostic Auditing &amp; 50+ Interviews</strong><p>Hazard profiling, student surveys, earth pit tests (4.2-8.1 Ω logged).</p></div>
+      <div class="t-item"><div class="t-dot"></div><strong>Day 10–13: Engineering Synthesis &amp; Design</strong><p>Annexure 4 energy balance, machine guard CAD, 75 kWp solar sizing.</p></div>
+      <div class="t-item"><div class="t-dot"></div><strong>Day 14–15: Presentation &amp; Report Submission</strong><p>Principal &amp; HOD review, risk validation, GTU submission.</p></div>
+    </div>
+
+    <h3 style="margin:2rem 0 .8rem;">Work Breakdown Structure</h3>
+    <div class="acc"><button class="acc-h" onclick="toggleAcc(this)"><span>WBS 1.0: Machine Guard &amp; Workshop Safety Retrofits</span><span>▾</span></button><div class="acc-c"><div style="padding:.8rem 0;">1.1 Hazard Profiling | 1.2 Polycarbonate Shield CAD | 1.3 Magnetic Interlock &amp; E-Stop Wiring.</div></div></div>
+    <div class="acc"><button class="acc-h" onclick="toggleAcc(this)"><span>WBS 2.0: Substation, Chemical Earthing &amp; APFC Panel</span><span>▾</span></button><div class="acc-c"><div style="padding:.8rem 0;">2.1 Earth Megger Tests | 2.2 Chemical Grounding (&lt;1Ω) | 2.3 50 kVAR APFC Panel Deployment.</div></div></div>
+    <div class="acc"><button class="acc-h" onclick="toggleAcc(this)"><span>WBS 3.0: 75 kWp Solar PV Plant &amp; DGVCL Net Metering</span><span>▾</span></button><div class="acc-c"><div style="padding:.8rem 0;">3.1 RCC Roof Structural Wind Check | 3.2 Mono-PERC Inverter Layout | 3.3 Net-Meter Liaison.</div></div></div>
+
+    <h3 style="margin:2rem 0 .8rem;">Project RACI Matrix</h3>
+    <div class="table-wrap">
+      <table class="raci-table" id="raci-table">
+        <thead><tr><th>Task</th><th>Harshil V.</th><th>Harshil J.</th><th>Bhavy M.</th><th>Jaivik K.</th><th>Manthan P.</th><th>Prof. Varotariya</th></tr></thead>
+        <tbody>
+          <tr><td>Surveys &amp; Interviews</td><td><span class="chip chip-a">A</span></td><td><span class="chip chip-r">R</span></td><td><span class="chip chip-r">R</span></td><td><span class="chip chip-c">C</span></td><td><span class="chip chip-c">C</span></td><td><span class="chip chip-i">I</span></td></tr>
+          <tr><td>Megger Earth Testing</td><td><span class="chip chip-r">R</span></td><td><span class="chip chip-a">A</span></td><td><span class="chip chip-r">R</span></td><td><span class="chip chip-c">C</span></td><td><span class="chip chip-i">I</span></td><td><span class="chip chip-c">C</span></td></tr>
+          <tr><td>Machine Guard CAD</td><td><span class="chip chip-r">R</span></td><td><span class="chip chip-c">C</span></td><td><span class="chip chip-a">A</span></td><td><span class="chip chip-r">R</span></td><td><span class="chip chip-i">I</span></td><td><span class="chip chip-c">C</span></td></tr>
+          <tr><td>75 kWp Solar Sizing</td><td><span class="chip chip-a">A</span></td><td><span class="chip chip-c">C</span></td><td><span class="chip chip-c">C</span></td><td><span class="chip chip-r">R</span></td><td><span class="chip chip-r">R</span></td><td><span class="chip chip-c">C</span></td></tr>
+          <tr><td>Risk &amp; Review</td><td><span class="chip chip-r">R</span></td><td><span class="chip chip-c">C</span></td><td><span class="chip chip-c">C</span></td><td><span class="chip chip-c">C</span></td><td><span class="chip chip-a">A</span></td><td><span class="chip chip-a">A</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 8. ENERGY ANALYSIS -->
+<section class="section" id="energy">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Data Viz</span><h2>Energy Analysis (Annexure 4)</h2><div class="gold-line"></div></div>
+    <div class="grid-2" style="margin-bottom:1.5rem;">
+      <div class="card"><h4 style="text-align:center;margin-bottom:.5rem;">Consumption Share (%)</h4><div class="chart-box"><canvas id="c-doughnut"></canvas></div></div>
+      <div class="card"><h4 style="text-align:center;margin-bottom:.5rem;">Monthly Load &amp; Waste (kWh)</h4><div class="chart-box"><canvas id="c-bar"></canvas></div></div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Category</th><th>Monthly kWh</th><th>Share %</th><th>Primary Inefficiency</th><th>Potential Saving</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Mechanical Machinery</strong></td><td>19,850</td><td>36.5%</td><td>Idling IE1 motors &amp; drive friction</td><td style="color:var(--success);">6,950 kWh</td></tr>
+          <tr><td><strong>Lighting &amp; Fans</strong></td><td>14,140</td><td>26.0%</td><td>40W Fluorescent tubes &amp; ballasts</td><td style="color:var(--success);">5,650 kWh</td></tr>
+          <tr><td><strong>Computer Labs</strong></td><td>8,700</td><td>16.0%</td><td>Standby vampiric loads</td><td style="color:var(--success);">2,610 kWh</td></tr>
+          <tr><td><strong>Administrative HVAC</strong></td><td>6,520</td><td>12.0%</td><td>Non-inverter split ACs</td><td style="color:var(--success);">2,280 kWh</td></tr>
+          <tr><td><strong>Pumps &amp; Exterior Lighting</strong></td><td>5,166</td><td>9.5%</td><td>Manual throttling &amp; 250W HPSV</td><td style="color:var(--success);">2,510 kWh</td></tr>
+          <tr style="background:var(--elevated);font-weight:700;"><td>Total Baseline</td><td>54,376</td><td>100.0%</td><td>Power Factor = 0.72</td><td style="color:var(--success);">20,000 kWh (36.8%)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <small style="color:var(--muted);float:right;">* Figures shown exactly as published in internship report.</small>
+  </div>
+</section>
+
+<!-- 9. PROBLEMS & ALL POSSIBLE SOLUTIONS -->
+<section class="section" id="solutions" style="background:var(--elevated);clear:both;">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Engineering Options</span><h2>Problems &amp; ALL Evaluated Solutions</h2><div class="gold-line"></div></div>
+    <div style="display:flex;gap:.5rem;border-bottom:1px solid var(--border);margin-bottom:1.2rem;">
+      <button class="tab-btn active" onclick="tab(this,'s-p01')">P-01: Safety</button>
+      <button class="tab-btn" onclick="tab(this,'s-p02')">P-02: Electrical</button>
+      <button class="tab-btn" onclick="tab(this,'s-p03')">P-03: Solar</button>
+    </div>
+    <div id="s-p01" class="tab-pane active">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Option</th><th>Description</th><th>Feasibility</th><th>CAPEX</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Option A</td><td>Do Nothing</td><td>High</td><td>₹0</td><td><span class="badge b-danger">Rejected</span></td></tr>
+            <tr><td>Option B</td><td>Complete CNC Replacement</td><td>Low</td><td>₹85-110 L</td><td><span class="badge b-warning">Prohibitive</span></td></tr>
+            <tr><td>Option C</td><td>Warning Signs Only</td><td>High</td><td>₹35,000</td><td><span class="badge b-danger">Fails IS 11016</span></td></tr>
+            <tr style="background:var(--gold-lt);"><td><strong>Option D</strong></td><td><strong>Custom Engineered Retrofit</strong></td><td><strong>Very High</strong></td><td><strong>₹2.8-3.5 L</strong></td><td><span class="badge b-gold">Selected</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="border-left:4px solid var(--gold);">
+        <h4>Selected Solution: Engineered Safety Retrofit (₹2.8 – ₹3.5 Lakhs)</h4>
+        <p>Polycarbonate shields, microswitch limit interlocks, and emergency mushroom stops for lathes, mills, and shapers.<br>
+        <strong>Itemised:</strong> Lathes (₹1,15,000) | Shapers &amp; Mills (₹95,000) | E-stops (₹55,000) | IS 11016 Certification (₹40,000).</p>
+      </div>
+    </div>
+    <div id="s-p02" class="tab-pane">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Option</th><th>Description</th><th>Feasibility</th><th>CAPEX</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Option A</td><td>Salt/Charcoal Re-earthing</td><td>High</td><td>₹80,000</td><td><span class="badge b-warning">Temporary</span></td></tr>
+            <tr><td>Option B</td><td>Full Substation Rebuild</td><td>Moderate</td><td>₹45-55 L</td><td><span class="badge b-warning">High Cost</span></td></tr>
+            <tr style="background:var(--gold-lt);"><td><strong>Option C</strong></td><td><strong>APFC + Chemical Earth + LED/PIR</strong></td><td><strong>High</strong></td><td><strong>₹6.5-8.5 L</strong></td><td><span class="badge b-gold">Selected</span></td></tr>
+            <tr><td>Option D</td><td>VFD Drives Only</td><td>Moderate</td><td>₹7-9 L</td><td><span class="badge b-warning">High THD</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="border-left:4px solid var(--gold);">
+        <h4>Selected Solution: Electrical Safety &amp; APFC (₹6.5 – ₹8.5 Lakhs)</h4>
+        <p>Chemical earth pits (&lt;1Ω), 50 kVAR APFC panel (PF 0.98), 30mA RCCB panels, and campus LED retrofit.<br>
+        <strong>Itemised:</strong> 6x Earth pits (₹1,50,000) | 50 kVAR APFC (₹2,20,000) | 30mA RCCBs (₹1,30,000) | LEDs (₹2,20,000).</p>
+      </div>
+    </div>
+    <div id="s-p03" class="tab-pane">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Option</th><th>Description</th><th>Feasibility</th><th>CAPEX</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Option A</td><td>25 kWp Pilot</td><td>High</td><td>₹16-18 L</td><td><span class="badge b-warning">Subscale</span></td></tr>
+            <tr style="background:var(--gold-lt);"><td><strong>Option B</strong></td><td><strong>75 kWp Grid-Tied Rooftop PV</strong></td><td><strong>High</strong></td><td><strong>₹45-52 L</strong></td><td><span class="badge b-gold">Selected</span></td></tr>
+            <tr><td>Option C</td><td>150 kWp Solar + Battery Storage</td><td>Moderate</td><td>₹1.2-1.4 Cr</td><td><span class="badge b-danger">Payback &gt;9 yrs</span></td></tr>
+            <tr><td>Option D</td><td>Open Access PPA</td><td>Low</td><td>₹0 CAPEX</td><td><span class="badge b-warning">Policy Hurdles</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="border-left:4px solid var(--gold);">
+        <h4>Selected Solution: 75 kWp Grid-Tied Solar PV (₹45 – ₹52 Lakhs)</h4>
+        <p>Mono-PERC panels on 10,500 sq ft RCC rooftop with dual-MPPT inverters and DGVCL net-metering.<br>
+        <strong>Itemised:</strong> 138x 545 Wp modules (₹24,50,000) | 2x 35 kW Inverters (₹6,80,000) | Structures (₹7,50,000) | BOS (₹8,20,000).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. SOLUTION SPECIFICATIONS -->
+<section class="section" id="specs">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Engineering BOQ</span><h2>Solution Specifications</h2><div class="gold-line"></div></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>System</th><th>Component</th><th>Specification</th><th>Governing Code</th></tr></thead>
+        <tbody>
+          <tr><td>Machine Guard</td><td>Chuck Shield</td><td>5mm High-Impact Polycarbonate (Lexan)</td><td>IS 11016:1984 / ISO 14120</td></tr>
+          <tr><td>Machine Guard</td><td>Safety Interlock</td><td>IP67 Magnetic Safety Switch (24V DC, 0.15s cut)</td><td>IEC 60947-5-3</td></tr>
+          <tr><td>75 kWp Solar</td><td>PV Modules</td><td>Mono-PERC Half-Cut 545 Wp (21.2% efficiency)</td><td>IEC 61215 / ALMM Tier-1</td></tr>
+          <tr><td>75 kWp Solar</td><td>Inverters</td><td>2x 35 kW 3-Phase Grid-Tied (Dual MPPT, &gt;98.6%)</td><td>IEC 62109 / IEEE 1547</td></tr>
+          <tr><td>Lighting / PIR</td><td>High Bays &amp; Battens</td><td>80W High Bay (140 lm/W) &amp; 18W Battens + Dual PIR</td><td>IS 3646 / BEE ECBC</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 11. SOLAR & SAVINGS CALCULATOR -->
+<section class="section" id="calculator" style="background:var(--elevated);">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Sensitivity Simulator</span><h2>Interactive Solar Calculator</h2><div class="gold-line"></div></div>
+    <div class="card">
+      <div class="grid-2">
+        <div>
+          <div style="margin-bottom:1rem;"><label style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:600;">Capacity (kWp)<strong id="c-cap-l" style="color:var(--gold);">75 kWp</strong></label><input type="number" id="c-cap" value="75" min="10" max="300" step="5" oninput="calc()" style="width:100%;padding:.6rem;border-radius:6px;border:1px solid var(--border);"></div>
+          <div style="margin-bottom:1rem;"><label style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:600;">Solar GHI (kWh/m²/day)<strong id="c-ghi-l" style="color:var(--gold);">5.40</strong></label><input type="number" id="c-ghi" value="5.4" min="3.5" max="7" step="0.1" oninput="calc()" style="width:100%;padding:.6rem;border-radius:6px;border:1px solid var(--border);"></div>
+          <div style="margin-bottom:1rem;"><label style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:600;">Tariff (₹/kWh)<strong id="c-tar-l" style="color:var(--gold);">₹ 6.50</strong></label><input type="number" id="c-tar" value="6.50" min="4" max="12" step="0.25" oninput="calc()" style="width:100%;padding:.6rem;border-radius:6px;border:1px solid var(--border);"></div>
+          <div style="margin-bottom:1rem;"><label style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:600;">Cost/kWp (₹)<strong id="c-cpk-l" style="color:var(--gold);">₹ 60,000</strong></label><input type="number" id="c-cpk" value="60000" min="40000" max="85000" step="1000" oninput="calc()" style="width:100%;padding:.6rem;border-radius:6px;border:1px solid var(--border);"></div>
+          <div><label style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:600;">Subsidy: <span id="c-sub-l">35%</span></label><input type="range" id="c-sub" min="0" max="50" value="35" oninput="document.getElementById('c-sub-l').innerText=this.value+'%';calc()" style="width:100%;accent-color:var(--gold);"></div>
+        </div>
+        <div style="background:var(--elevated);padding:1.4rem;border-radius:10px;border:1px solid var(--border);">
+          <div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);"><span>Gross CAPEX:</span><strong id="o-gross">₹ 45.00 L</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);"><span>Net CAPEX:</span><strong id="o-net" style="color:var(--teal);">₹ 29.25 L</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);"><span>Annual Generation:</span><strong id="o-gen">1,18,260 kWh</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);"><span>Annual Bill Saving:</span><strong id="o-save" style="color:var(--gold);">₹ 7.69 L</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);"><span>Simple Payback:</span><strong id="o-pb" style="color:var(--success);">3.8 Years</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:.5rem 0;"><span>CO₂ Avoided:</span><strong id="o-co2">97.0 Tonnes</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. BUDGET AND ROI -->
+<section class="section" id="budget">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Financial Plan</span><h2>Budget &amp; ROI (Table 10)</h2><div class="gold-line"></div></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Package</th><th>Scope</th><th>CAPEX</th><th>Annual Saving</th><th>Payback</th><th>CO₂ Reduction</th></tr></thead>
+        <tbody>
+          <tr><td>Pkg 1: Machine Safety</td><td>Polycarbonate shields &amp; interlocks</td><td>₹ 3.0–3.5 L</td><td>₹ 0.8–1.2 L</td><td>~3.0 Years</td><td>Life Safety</td></tr>
+          <tr><td>Pkg 2: Electrical &amp; APFC</td><td>Chemical earthing, APFC panel, LEDs</td><td>₹ 6.5–8.5 L</td><td>₹ 8.5–11.5 L</td><td>0.8–1.0 Years</td><td>~95 t CO₂/yr</td></tr>
+          <tr><td>Pkg 3: 75 kWp Solar PV</td><td>Mono-PERC arrays &amp; net-metering</td><td>₹ 45.0–56.0 L</td><td>₹ 8.0–10.4 L</td><td>4.5–5.5 Years</td><td>~105 t CO₂/yr</td></tr>
+          <tr style="background:var(--elevated);font-weight:700;"><td>TOTAL MASTER PROGRAM</td><td>Turnkey Campus Transformation</td><td>₹ 54.5–68.0 L</td><td style="color:var(--success);">₹ 17.3–23.1 L/yr</td><td style="color:var(--gold);">2.5–3.5 Years</td><td style="color:var(--teal);">~200 t CO₂/yr</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-2" style="margin-top:1.5rem;">
+      <div class="card"><h4 style="text-align:center;margin-bottom:.5rem;">CAPEX vs Saving (₹ L)</h4><div class="chart-box"><canvas id="c-budget"></canvas></div></div>
+      <div class="card"><h4 style="text-align:center;margin-bottom:.5rem;">Payback Horizon (Years)</h4><div class="chart-box"><canvas id="c-payback"></canvas></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. RISK MATRIX -->
+<section class="section" id="risks" style="background:var(--elevated);">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Contingency</span><h2>Risk Assessment Matrix (7 Risks)</h2><div class="gold-line"></div></div>
+    <div style="display:flex;gap:.4rem;margin-bottom:1rem;flex-wrap:wrap;">
+      <button class="btn btn-outline" onclick="filterRisk('all')">All (7)</button>
+      <button class="btn btn-outline" onclick="filterRisk('high')">High</button>
+      <button class="btn btn-outline" onclick="filterRisk('medium')">Medium</button>
+      <button class="btn btn-outline" onclick="filterRisk('low')">Low</button>
+    </div>
+    <div class="table-wrap">
+      <table id="r-table">
+        <thead><tr><th>ID</th><th>Risk Description</th><th>Probability</th><th>Impact</th><th>Rating</th><th>Mitigation</th></tr></thead>
+        <tbody>
+          <tr data-r="high"><td>R-01</td><td>Coastal Structural Corrosion</td><td>High</td><td>High</td><td><span class="badge b-danger">High</span></td><td>Hot-dip galvanization min 80μm with SS304/SS316 fasteners.</td></tr>
+          <tr data-r="high"><td>R-02</td><td>Student Bypassing Safety Interlocks</td><td>High</td><td>High</td><td><span class="badge b-danger">High</span></td><td>Keyed bypass switches under faculty control + lab exam marks link.</td></tr>
+          <tr data-r="medium"><td>R-03</td><td>DGVCL Net-Metering Grid Delay</td><td>Medium</td><td>High</td><td><span class="badge b-warning">Medium</span></td><td>Parallel DISCOM &amp; CEIG regulatory filing during procurement.</td></tr>
+          <tr data-r="medium"><td>R-04</td><td>Harmonic Distortion from Motors</td><td>Medium</td><td>Medium</td><td><span class="badge b-warning">Medium</span></td><td>7% detuned harmonic reactors inside 50 kVAR APFC capacitor bank.</td></tr>
+          <tr data-r="medium"><td>R-05</td><td>Earth Pit Drying in Dry Summer</td><td>Medium</td><td>Medium</td><td><span class="badge b-warning">Medium</span></td><td>Maintenance-free chemical copper pipes packed with bentonite.</td></tr>
+          <tr data-r="low"><td>R-06</td><td>Dust Soiling on Solar Modules</td><td>High</td><td>Low</td><td><span class="badge b-gold">Low</span></td><td>Pressurized CPVC rooftop wash headers with quick-connect nozzles.</td></tr>
+          <tr data-r="low"><td>R-07</td><td>Lack of PM Maintenance Logging</td><td>Low</td><td>Medium</td><td><span class="badge b-gold">Low</span></td><td>QR-code tagging on switchboards with weekly supervisor sign-offs.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 14. SURVEYS AND INTERVIEWS -->
+<section class="section" id="surveys">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Field Evidence</span><h2>Surveys &amp; Diagnostic Interviews (Annexures 1–3)</h2><div class="gold-line"></div></div>
+    <div class="card" style="margin-bottom:1.5rem;"><h4 style="text-align:center;margin-bottom:.5rem;">Survey Affirmative Response Rates (%)</h4><div class="chart-box"><canvas id="c-survey"></canvas></div></div>
+    <div class="grid-2">
+      <div>
+        <h4 style="margin-bottom:.5rem;">Key Interview Insights</h4>
+        <div class="acc"><button class="acc-h" onclick="toggleAcc(this)"><span>Workshop Superintendents &amp; Technicians</span><span>▾</span></button><div class="acc-c"><div style="padding:.6rem 0;">"Near-miss chuck touches happen weekly during lathe turning. Interlocked shields will protect student limbs."</div></div></div>
+        <div class="acc"><button class="acc-h" onclick="toggleAcc(this)"><span>Electrical Maintenance Staff</span><span>▾</span></button><div class="acc-c"><div style="padding:.6rem 0;">"Old earth pits dried out. Mild shocks occur during monsoon rains; chemical earthing is urgent."</div></div></div>
+        <div class="acc"><button class="acc-h" onclick="toggleAcc(this)"><span>Principal &amp; Administration</span><span>▾</span></button><div class="acc-c"><div style="padding:.6rem 0;">"Power bills consume vital institutional contingency funds. 75 kWp solar will save ₹8+ Lakhs/yr."</div></div></div>
+      </div>
+      <div>
+        <h4 style="margin-bottom:.5rem;">Electrical Audit Checklist</h4>
+        <div class="table-wrap" style="margin:0;">
+          <table>
+            <thead><tr><th>Checkpoint</th><th>Status</th><th>Severity</th></tr></thead>
+            <tbody>
+              <tr><td>Ground Resistance</td><td>4.2–8.1 Ω (Failed)</td><td><span class="badge b-danger">Critical</span></td></tr>
+              <tr><td>RCD / RCCB Protection</td><td>Absent in 85% panels</td><td><span class="badge b-danger">Critical</span></td></tr>
+              <tr><td>APFC Power Factor</td><td>0.72 (Penalty incurred)</td><td><span class="badge b-warning">High</span></td></tr>
+              <tr><td>Wiring Insulation</td><td>Cracked rubber joints</td><td><span class="badge b-warning">High</span></td></tr>
+              <tr><td>Emergency Lights</td><td>Absent in workshops</td><td><span class="badge b-gold">Medium</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15. CONCLUSION & COMPETENCIES -->
+<section class="section" id="conclusion" style="background:var(--elevated);">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Academic Reflection</span><h2>Conclusion &amp; Core Competencies</h2><div class="gold-line"></div></div>
+    <div class="card" style="border-left:4px solid var(--gold);margin-bottom:1.8rem;">
+      <p style="font-size:.95rem;line-height:1.75;margin:0;">
+        The 15-day GTU Societal Internship (BE05000011) at Government Engineering College, Valsad establishes a validated engineering blueprint for campus transformation. Combining mechanical safety retrofits (IS 11016), chemical earthing (IS 3043), and a 75 kWp rooftop solar plant avoids ~200 tonnes of CO₂ annually, slashes power bills by ₹17.3–23.1 Lakhs/yr, and secures 1,200+ students with a 2.5–3.5 year blended payback.
+      </p>
+    </div>
+    <div class="grid-4">
+      <div class="card"><h4>1. Safety Engineering</h4><p style="font-size:.82rem;">IS 11016 machine risk analysis and fail-safe interlock design.</p></div>
+      <div class="card"><h4>2. Power &amp; Earthing</h4><p style="font-size:.82rem;">Megger insulation measurement and IS 3043 chemical earthing design.</p></div>
+      <div class="card"><h4>3. Solar PV Engineering</h4><p style="font-size:.82rem;">GHI irradiance modeling, string matching, and DGVCL net-metering.</p></div>
+      <div class="card"><h4>4. Energy Auditing</h4><p style="font-size:.82rem;">Annexure 4 load disaggregation, clamp logging, and PF penalty math.</p></div>
+      <div class="card"><h4>5. Techno-Economics</h4><p style="font-size:.82rem;">Table 10 capital budgeting, discounted payback, and sensitivity modeling.</p></div>
+      <div class="card"><h4>6. Project Management</h4><p style="font-size:.82rem;">15-day WBS structuring, RACI governance, and risk triage.</p></div>
+      <div class="card"><h4>7. Stakeholder Dialogue</h4><p style="font-size:.82rem;">Surveys with 50+ staff and 1,200+ students translated into engineering specs.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 16. REFERENCES -->
+<section class="section" id="references">
+  <div class="container">
+    <div class="header"><span class="eyebrow">Citations</span><h2>Statutory Codes &amp; References</h2><div class="gold-line"></div></div>
+    <input type="text" id="r-search" placeholder="Search codes (IS 3043, Solar, CEA)..." oninput="searchRef()" style="width:100%;max-width:350px;display:block;margin:0 auto 1.2rem;padding:.5rem 1rem;border-radius:20px;border:1px solid var(--border);">
+    <div class="table-wrap">
+      <table id="ref-tbl">
+        <thead><tr><th>Code</th><th>Title</th><th>Authority</th><th>Relevance</th></tr></thead>
+        <tbody>
+          <tr><td><strong>IS 11016:1984</strong></td><td>Safety Requirements for Machine Tools</td><td>BIS</td><td>Mandatory interlocked guards on lathes and mills.</td></tr>
+          <tr><td><strong>IS 3043:2018</strong></td><td>Code of Practice for Earthing</td><td>BIS</td><td>Statutory &lt;1.0 Ω grounding resistance for substations.</td></tr>
+          <tr><td><strong>IS 3646:1992</strong></td><td>Interior Illumination Standards</td><td>BIS</td><td>300–500 lux standard for engineering workshops.</td></tr>
+          <tr><td><strong>CEA Regs 2010</strong></td><td>Measures for Safety and Electric Supply</td><td>CEA</td><td>Mandatory RCCB / ELCB installation on panels.</td></tr>
+          <tr><td><strong>Gujarat Solar 2021</strong></td><td>Rooftop Solar Net-Metering Policy</td><td>GoG</td><td>DGVCL grid connectivity and net-metering norms.</td></tr>
+          <tr><td><strong>BEE ECBC 2022</strong></td><td>Energy Conservation Building Code</td><td>BEE</td><td>Lighting power density and sub-metering mandates.</td></tr>
+          <tr><td><strong>MNRE Specs</strong></td><td>Benchmark Standards for Grid-Tied PV</td><td>MNRE</td><td>Tier-1 ALMM modules and IEEE 1547 compliance.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 17. FOOTER -->
+<footer style="background:var(--elevated);border-top:1px solid var(--border);padding:3rem 0 1.5rem;font-size:.84rem;color:var(--muted);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-bottom:2rem;">
+      <div>
+        <h3 style="font-size:1.2rem;">Sustainable Campus Vision</h3>
+        <p style="margin-top:.4rem;font-size:.82rem;">GTU Societal Internship (BE05000011)<br>Government Engineering College, Valsad<br>Tithal Road, Valsad, Gujarat 396001</p>
+      </div>
+      <div>
+        <h4>Project Team</h4>
+        <p style="margin-top:.4rem;font-size:.82rem;line-height:1.6;">
+          <strong>Patel Harshilbhai Vinodbhai</strong> (240190119072)<br>
+          Patel Harshil Jitendrabhai<br>
+          Patel Bhavy Maheshbhai<br>
+          Patel Jaivik Kaushikbhai<br>
+          Patel Manthan Prashantbhai
+        </p>
+      </div>
+      <div>
+        <h4>Supervision &amp; Cohort</h4>
+        <p style="margin-top:.4rem;font-size:.82rem;line-height:1.6;">
+          Faculty Guide: <strong>Prof. R.J. Varotariya</strong><br>
+          Department of Mechanical Engineering<br>
+          GEC Valsad | Gujarat Technological University<br>
+          Internship Tenure: June 2026
+        </p>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:1rem;font-size:.78rem;">
+      <div>&copy; 2026 GEC Valsad &amp; GTU. All Rights Reserved.</div>
+      <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="background:transparent;border:none;color:var(--gold);cursor:pointer;font-weight:600;">Back to Top ↑</button>
+    </div>
+  </div>
+</footer>
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+'use strict';
+const gallery = [
+  {t:"Figure 1: Main Gate",d:"Primary campus portal on Tithal Road with overhead lines."},
+  {t:"Figure 2: Campus & Solar Roof",d:"25-acre aerial view and 10,500 sq ft concrete roof reserved for 75 kWp PV."},
+  {t:"Figure 3: Shaper Machine",d:"Exposed reciprocating ram arm and open belt pulleys posing entrapment risks."},
+  {t:"Figure 4: Universal Milling Machine",d:"Milling cutter rotating without swarf chip guard; coolant spray."},
+  {t:"Figure 5: Heavy Duty Lathe",d:"Unshielded 3-jaw chuck and revolving lead screw violating IS 11016:1984."},
+  {t:"Figure 6: Welding Booths",d:"Inadequate fume exhaust and damaged eye flash protective screens."},
+  {t:"Figure 7: Bench Drilling Machine",d:"Unshielded high-speed drill chuck and missing workpiece clamp vice."}
+];
+
+const gCont = document.getElementById('gallery-container');
+if(gCont){
+  gCont.innerHTML = gallery.map((g,i)=>`
+    <div class="card" style="padding:1rem;">
+      <div style="height:140px;background:var(--elevated);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-bottom:.8rem;" onclick="openLb(${i})">
+        <span style="font-size:1.8rem;">📷</span>
+      </div>
+      <h4 style="font-size:.9rem;">${g.t}</h4>
+      <p style="font-size:.78rem;margin:.3rem 0 .7rem;">${g.d}</p>
+      <label class="btn btn-outline" style="padding:.25rem .6rem;font-size:.75rem;cursor:pointer;">Upload Photo<input type="file" accept="image/*" style="display:none;" onchange="upImg(event,${i})"></label>
+    </div>
+  `).join('');
+}
+
+function openLb(i){
+  document.getElementById('lb-t').innerText = gallery[i].t;
+  document.getElementById('lb-d').innerText = gallery[i].d;
+  document.getElementById('lb-view').innerHTML = gallery[i].img ? `<img src="${gallery[i].img}" style="max-height:100%;max-width:100%;">` : '<span style="color:#FFF;">No photo uploaded yet. Use Upload Photo button.</span>';
+  document.getElementById('lb').classList.add('active');
+}
+function upImg(e,i){
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader(); r.onload = ev => { gallery[i].img = ev.target.result; alert('Photo loaded in-memory! Click thumbnail to view.'); };
+  r.readAsDataURL(f);
+}
+
+function toggleAcc(b){ const c = b.nextElementSibling; c.style.maxHeight = c.style.maxHeight ? null : (c.scrollHeight+16)+'px'; }
+function tab(b,id){
+  b.parentElement.querySelectorAll('.tab-btn').forEach(btn=>btn.classList.remove('active'));
+  b.classList.add('active');
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function filterRisk(lvl){
+  document.querySelectorAll('#r-table tbody tr').forEach(r=>{ r.style.display = (lvl==='all'||r.getAttribute('data-r')===lvl)?'':'none'; });
+}
+function searchRef(){
+  const q = document.getElementById('r-search').value.toLowerCase();
+  document.querySelectorAll('#ref-tbl tbody tr').forEach(r=>{ r.style.display = r.innerText.toLowerCase().includes(q)?'':'none'; });
+}
+
+function calc(){
+  const cap = parseFloat(document.getElementById('c-cap').value)||75;
+  const ghi = parseFloat(document.getElementById('c-ghi').value)||5.4;
+  const tar = parseFloat(document.getElementById('c-tar').value)||6.5;
+  const cpk = parseFloat(document.getElementById('c-cpk').value)||60000;
+  const sub = parseFloat(document.getElementById('c-sub').value)||0;
+
+  document.getElementById('c-cap-l').innerText = cap+' kWp';
+  document.getElementById('c-ghi-l').innerText = ghi.toFixed(2);
+  document.getElementById('c-tar-l').innerText = '₹ '+tar.toFixed(2);
+  document.getElementById('c-cpk-l').innerText = '₹ '+cpk.toLocaleString('en-IN');
+
+  const gen = cap * ghi * 365 * 0.78;
+  const sav = gen * tar;
+  const gross = cap * cpk;
+  const net = gross * (1 - sub/100);
+  const pb = sav > 0 ? (net/sav) : 0;
+  const co2 = (gen * 0.82) / 1000;
+
+  document.getElementById('o-gross').innerText = '₹ '+(gross/100000).toFixed(2)+' L';
+  document.getElementById('o-net').innerText = '₹ '+(net/100000).toFixed(2)+' L';
+  document.getElementById('o-gen').innerText = Math.round(gen).toLocaleString('en-IN')+' kWh';
+  document.getElementById('o-save').innerText = '₹ '+(sav/100000).toFixed(2)+' L';
+  document.getElementById('o-pb').innerText = isFinite(pb) ? pb.toFixed(1)+' Years' : 'N/A';
+  document.getElementById('o-co2').innerText = co2.toFixed(1)+' Tonnes';
+}
+
+function toggleTheme(){
+  const cur = document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',cur);
+  try{ localStorage.setItem('theme',cur); }catch(e){}
+  drawCharts();
+}
+try{ const t = localStorage.getItem('theme'); if(t) document.documentElement.setAttribute('data-theme',t); }catch(e){}
+
+let ch1,ch2,ch3,ch4,ch5;
+function drawCharts(){
+  if(typeof Chart==='undefined') return;
+  const dark = document.documentElement.getAttribute('data-theme')==='dark';
+  const tc = dark?'#F0F4F8':'#0F2A43';
+  const mc = dark?'#A1B4C4':'#4B6375';
+  const bc = dark?'rgba(255,255,255,.08)':'rgba(15,42,67,.08)';
+
+  if(ch1) ch1.destroy();
+  ch1 = new Chart(document.getElementById('c-doughnut'),{
+    type:'doughnut',
+    data:{
+      labels:['Machinery (36.5%)','Lighting (26%)','Computers (16%)','HVAC (12%)','Pumps (9.5%)'],
+      datasets:[{data:[19850,14140,8700,6520,5166],backgroundColor:['#B8924A','#1F6F78','#3B82F6','#D35400','#8B5CF6']}]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:tc,font:{size:11}}}}}
+  });
+
+  if(ch2) ch2.destroy();
+  ch2 = new Chart(document.getElementById('c-bar'),{
+    type:'bar',
+    data:{
+      labels:['Machinery','Lighting','Computers','HVAC','Pumps'],
+      datasets:[{label:'Baseline kWh',data:[19850,14140,8700,6520,5166],backgroundColor:'#B8924A'},{label:'Avoidable Waste',data:[6950,5650,2610,2280,2510],backgroundColor:'#1F6F78'}]
+    },
+    options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:mc}},y:{ticks:{color:mc},grid:{color:bc}}},plugins:{legend:{labels:{color:tc}}}}
+  });
+
+  if(ch3) ch3.destroy();
+  ch3 = new Chart(document.getElementById('c-budget'),{
+    type:'bar',
+    data:{
+      labels:['Safety','Electrical','Solar PV'],
+      datasets:[{label:'CAPEX (₹ L)',data:[3.25,7.5,50.5],backgroundColor:'#B8924A'},{label:'Annual Saving (₹ L)',data:[1,10,9.2],backgroundColor:'#1F6F78'}]
+    },
+    options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:mc}},y:{ticks:{color:mc},grid:{color:bc}}},plugins:{legend:{labels:{color:tc}}}}
+  });
+
+  if(ch4) ch4.destroy();
+  ch4 = new Chart(document.getElementById('c-payback'),{
+    type:'line',
+    data:{
+      labels:['Yr 0','Yr 1','Yr 2','Yr 3 (Break-Even)','Yr 4','Yr 5'],
+      datasets:[{label:'Net Cashflow (₹ L)',data:[-61.25,-41.05,-20.85,-0.65,19.55,39.75],borderColor:'#B8924A',backgroundColor:'rgba(184,146,74,.2)',fill:true}]
+    },
+    options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:mc}},y:{ticks:{color:mc},grid:{color:bc}}},plugins:{legend:{labels:{color:tc}}}}
+  });
+
+  if(ch5) ch5.destroy();
+  ch5 = new Chart(document.getElementById('c-survey'),{
+    type:'bar',
+    data:{
+      labels:['Hazards Noticed','Shocks Felt','Dim Light','Support Solar','Trained Safety','Reported Faults','Support Green'],
+      datasets:[{label:'Affirmative %',data:[84,71,68,79,8,61,74],backgroundColor:['#C0392B','#C0392B','#D35400','#27AE60','#C0392B','#1F6F78','#B8924A']}]
+    },
+    options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{color:mc}},y:{min:0,max:100,ticks:{color:mc},grid:{color:bc}}},plugins:{legend:{display:false}}}
+  });
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  calc();drawCharts();
+  const pb = document.getElementById('progress-bar');
+  const bt = document.getElementById('back-to-top');
+  window.addEventListener('scroll',()=>{
+    const st = window.scrollY; const sh = document.documentElement.scrollHeight - window.innerHeight;
+    if(pb) pb.style.width = ((st/sh)*100)+'%';
+    if(bt) bt.style.display = st > 300 ? 'flex' : 'none';
+  });
+
+  const rt = document.getElementById('raci-table');
+  if(rt){
+    rt.querySelectorAll('tbody td').forEach(td=>{
+      td.addEventListener('mouseenter',function(){
+        const i = this.cellIndex; this.parentElement.classList.add('r-h');
+        rt.querySelectorAll('tr').forEach(tr=>{ if(tr.children[i]) tr.children[i].classList.add('c-h'); });
+      });
+      td.addEventListener('mouseleave',function(){
+        const i = this.cellIndex; this.parentElement.classList.remove('r-h');
+        rt.querySelectorAll('tr').forEach(tr=>{ if(tr.children[i]) tr.children[i].classList.remove('c-h'); });
+      });
+    });
+  }
+
+  // Counter anim
+  let c = 0; const end = 54376; const el = document.getElementById('kpi-val');
+  const t = setInterval(()=>{ c += Math.ceil((end - c)/12); if(c>=end){c=end;clearInterval(t);} el.innerText = c.toLocaleString('en-IN'); }, 30);
+});
+</script>
+</body>
+</html>
